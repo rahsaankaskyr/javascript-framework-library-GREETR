@@ -11,15 +11,27 @@
         // function constructor - do not always have to use 'new' keyword
     }
 
+// prototype - empty object
+    Greetr.prototype = {};
+
     Greetr.init = function(firstName, lastName, language) {
 
+        // function constructor - build object - give 3 props
         // default properties 
         var self = this;
-        this.firstName: default, 
-        this.lastName: default,
-        this.language: en
+        self.firstName =  firstName || ''; 
+        self.lastName = lastName || '';
+        self.language = language || 'en';
 
     }
+
+    // objects that are created point here
+    Greetr.init.prototype = Greetr.prototype;
+
+    // pass to global object with alias
+    // global.Greetr object points to var Greetr value - lines 9-10
+    // global.G$ object points to var Greetr value - lines 9-10
+    global.Greetr = global.G$ = Greetr;
 
 
 }(window, jQuery));
