@@ -13,18 +13,67 @@
 
     var supportedLangs = ['en', 'es'];
 
-    greetings = {
+    var greetings = {
         en: 'Hello',
         es: 'Hola'
-    }
+    };
 
-    formalGreetings = {
+    var formalGreetings = {
         en: 'Greetings',  
         es: 'Saludos'
-    }
+    };
+// log to console 
+    var logMessages = {
+        en: 'Logged in',
+        es: 'Inicio sesion'
+
+    };
 
 // prototype - empty object
-    Greetr.prototype = {};
+// 
+    Greetr.prototype = {
+        // object literay syntax to create method
+        // function expression defines it
+        
+        fullName: function() {
+            return this.fullName + '' + this.lastName
+           },
+        
+        // seperate methods with commas
+        // throw an error when detecting languages
+        validate: function(){
+            if (supportedLangs.indexOf(this.language) === -1) {
+                throw "Invalid language";
+            }
+        },
+
+        greeting: function() {
+            return greetings[this.language] + '' + this.firstName + '!';
+        },
+
+        formalGreetings: function() {
+            return formalGreetings[this.language] + ', ' + this.fullName();
+        },
+
+        // chainable methods 
+
+        greet: function(formal) {
+            var msg;
+
+            // if undefined or null it will be coerced to 'false'
+            if (formal) {
+                msg = this.formalGreetings();
+            }
+            else {
+                msg = this.greeting()
+            }
+
+            if (console) {
+                console.log(msg);
+            }
+        }
+
+    };
 
     Greetr.init = function(firstName, lastName, language) {
 
