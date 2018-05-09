@@ -4,4 +4,4 @@
 
 (function(global, $) {
 
-}());
+}(window, jQuery));
