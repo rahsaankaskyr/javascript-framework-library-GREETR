@@ -11,6 +11,18 @@
         // function constructor - do not always have to use 'new' keyword
     }
 
+    var supportedLangs = ['en', 'es'];
+
+    greetings = {
+        en: 'Hello',
+        es: 'Hola'
+    }
+
+    formalGreetings = {
+        en: 'Greetings',  
+        es: 'Saludos'
+    }
+
 // prototype - empty object
     Greetr.prototype = {};
 

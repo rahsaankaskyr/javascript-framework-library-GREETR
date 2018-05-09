@@ -3,7 +3,5 @@ GREETR framework-lib
 
 // focus on structure
 
-
-	- 
 	- G$() structure
 	- supports jQuery
