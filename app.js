@@ -1,2 +1,5 @@
+// points to GREETR function
 var g = G$('Tako', 'NYC');
-console.log(g);
+// formal greeting
+g.greet().setLang('es').greet(true);
+

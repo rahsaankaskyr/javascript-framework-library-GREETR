@@ -25,7 +25,7 @@
 // log to console 
     var logMessages = {
         en: 'Logged in',
-        es: 'Inicio sesion'
+        es: 'Inició sesión'
 
     };
 
@@ -36,7 +36,7 @@
         // function expression defines it
         
         fullName: function() {
-            return this.fullName + '' + this.lastName
+            return this.firstName + ' ' + this.lastName;
            },
         
         // seperate methods with commas
@@ -48,10 +48,10 @@
         },
 
         greeting: function() {
-            return greetings[this.language] + '' + this.firstName + '!';
+            return greetings[this.language] + ' ' + this.firstName + '!';
         },
 
-        formalGreetings: function() {
+        formalGreeting: function() {
             return formalGreetings[this.language] + ', ' + this.fullName();
         },
 
@@ -62,18 +62,48 @@
 
             // if undefined or null it will be coerced to 'false'
             if (formal) {
-                msg = this.formalGreetings();
+                msg = this.formalGreeting();
             }
             else {
-                msg = this.greeting()
+                msg = this.greeting();
             }
 
             if (console) {
                 console.log(msg);
             }
+
+            // 'this' refers to calling object at execution time
+            // return statement makes the method chainable
+            return this;
+        },
+
+        // log function
+        // manual log
+        log: function() {
+            if (console) {
+                console.log(logMessages[this.language] + ': ' + this.fullName());
+            }
+            // makes chainable method
+            return this;
+        },
+
+        // change language 
+
+        setLang: function(lang) {
+            this.language = lang;
+
+            this.validate();
+
+            return this;
         }
 
     };
+// object literal ends
+
+
+// GREETR function return new GREETR.init function
+// builds object 
+// sets values 
 
     Greetr.init = function(firstName, lastName, language) {
 
@@ -87,6 +117,8 @@
     }
 
     // objects that are created point here
+    // prototype makes sure all objects access to all methods on protoype property
+
     Greetr.init.prototype = Greetr.prototype;
 
     // pass to global object with alias
